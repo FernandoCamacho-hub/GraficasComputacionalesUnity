@@ -9,9 +9,7 @@ public class GenerateRandomPositions : MonoBehaviour
 {
     [SerializeField] private int _numPos;
     [SerializeField] private GameObject[] _positions;
-
-    [SerializeField] private float _startPosition;
-    [SerializeField] private float _endPosition;
+    
     [SerializeField] private Vector3[] _initialPositions;
     private Vector3 _pos;
 
@@ -23,8 +21,6 @@ public class GenerateRandomPositions : MonoBehaviour
         {
             _initialPositions[i] = Vector3.zero;
         }
-        
-        
     }
 
     private void Start()

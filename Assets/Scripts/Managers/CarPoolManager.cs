@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CarPoolManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class CarPoolManager : MonoBehaviour
     [SerializeField] private GameObject _carPrefab;
     [SerializeField] private int _poolSize = 0;
     private Stack<GameObject> _pool = new Stack<GameObject>();
+    // [SerializeField] private CarSO[] _carScriptableObjects;
+
     public static CarPoolManager Instance
     {
         get => _carPoolManager;
@@ -34,25 +37,10 @@ public class CarPoolManager : MonoBehaviour
 
         for (int i = 0; i < _poolSize; i++)
         {
-            GameObject clone = Instantiate(_carPrefab);
+            GameObject clone = Instantiate(_carPrefab);;
             clone.SetActive(false);
             _pool.Push(clone);
         }
-    }
-    
-    public GameObject GetGameObject()
-    {
-        if (_pool.Count > 0)
-        {
-            return _pool.Pop();
-        }
-
-        return null;
-    }
-    
-    public void ReturnGameObjectToPool(GameObject go)
-    {
-        _pool.Push(go);
     }
 
     public GameObject Activate(Vector3 position)
